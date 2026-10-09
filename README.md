@@ -10,6 +10,10 @@
 
 It needs no data files. The font, graphics and game logic are all in the source. The game draws on the CPU into a 480x270 buffer and scales it 4x into a 1920x1080 tiled VideoOut buffer.
 
+<p align="center">
+  <img src="./game.png" width=100% height=100% />
+</p>
+
 ## Controls
 
 When nobody is playing, the game plays itself.

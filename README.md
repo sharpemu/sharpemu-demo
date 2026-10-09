@@ -26,7 +26,7 @@ When nobody is playing, the game plays itself.
 | --- | --- |
 | `src/game.c`, `src/game.h` | Game logic and drawing, with no platform code |
 | `src/main.c` | PS5 entry point, VideoOut, pad input and timing |
-| `static/` | `param.json`, `icon0.png` (512x512) and `pic0.png` (1920x1080), copied into `sce_sys/` |
+| `static/` | Metadata, icons, background and `snd0.at9` preview music, copied into `sce_sys/` |
 | `build.py` | Builds the app folder |
 
 ## Building
@@ -51,12 +51,19 @@ sharpemu-demo/
     param.json
     icon0.png
     pic0.png
+    snd0.at9
 ```
 
 ## CI
 
 Every push and pull request builds the app folder and uploads it as the `sharpemu-demo` artifact. Every push to the default branch also publishes a release tagged with the short commit hash, with `sharpemu-demo.zip` attached. SharpEmu downloads that zip during its build.
 
+## Music Credits
+
+GUI preview music: **Glitchy Battle** by **3xBlast**, from [OpenGameArt](https://opengameart.org/content/glitchy-battle), licensed under [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/).
+
+`Battle_0.ogg` was converted to 48 kHz stereo ATRAC9 at 192 kbps with a whole-track loop. The ready-made `static/snd0.at9` is only copied during builds; no audio encoder is needed. SharpEmu plays it when the demo is selected in the GUI, not inside the game.
+
 ## License
 
-GPL-2.0-or-later. See [LICENSE](LICENSE.txt).
+Code: GPL-2.0-or-later. See [LICENSE](LICENSE.txt). Preview music: CC-BY-SA 3.0, as credited above.

@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 SOURCES = ["src/main.c", "src/game.c"]
-STATIC_FILES = ["param.json", "icon0.png", "pic0.png"]
+STATIC_FILES = ["param.json", "icon0.png", "pic0.png", "snd0.at9"]
 FLAGS = [
     "-O2",
     "-ffreestanding",

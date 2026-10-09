@@ -55,6 +55,8 @@ class BuildTests(unittest.TestCase):
                 self.assertEqual((output / "eboot.bin").read_bytes(), expected)
                 for name in build.STATIC_FILES:
                     self.assertEqual((output / "sce_sys" / name).exists(), expected_result == 0)
+                    if expected_result == 0:
+                        self.assertEqual((output / "sce_sys" / name).read_bytes(), (build.ROOT / "static" / name).read_bytes())
 
     def test_link_failure_is_returned(self):
         with tempfile.TemporaryDirectory() as temporary:

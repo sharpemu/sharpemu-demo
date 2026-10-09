@@ -33,6 +33,10 @@ When nobody is playing, the game plays itself.
 
 The build needs Python 3, [ps5-payload-sdk](https://github.com/ps5-payload-dev/sdk) (v0.43) and LLVM 18 or newer. It does not use the SDK's libc or startup files, so the ELF only imports `libkernel`, `libSceVideoOut`, `libSceSystemService`, `libSceUserService` and `libScePad`.
 
+The build marks the ELF header with the PS5 OSABI (9) and ABI version (2), so SharpEmu detects it as PS5. The output remains a plain ELF, not a SELF container.
+
+Imports use the NIDs from SharpEmu's export catalog. The build generates temporary link-only stubs with the original library names; these are not included in the app folder. Source code still calls the readable function names, but `eboot.bin` imports NIDs, so no plain-symbol support is needed in the emulator.
+
 ```sh
 export PS5_PAYLOAD_SDK=/opt/ps5-payload-sdk
 python3 build.py /path/to/sharpemu-demo

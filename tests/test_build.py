@@ -57,6 +57,9 @@ class BuildTests(unittest.TestCase):
                     self.assertEqual((output / "sce_sys" / name).exists(), expected_result == 0)
                     if expected_result == 0:
                         self.assertEqual((output / "sce_sys" / name).read_bytes(), (build.ROOT / "static" / name).read_bytes())
+                if expected_result == 0:
+                    self.assertEqual({file.name for file in (output / "sce_sys").iterdir()},
+                                     {"param.json", "icon0.png", "pic0.png"})
 
     def test_link_failure_is_returned(self):
         with tempfile.TemporaryDirectory() as temporary:
